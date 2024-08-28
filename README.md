@@ -1,5 +1,10 @@
-
-    <title>Dungeon Adventure - README</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
     <h1>Dungeon Adventure</h1>
     <p>Welcome to <strong>Dungeon Adventure</strong>! This is a text-based adventure game written in Prolog. In this game, you'll explore various mystical locations, interact with characters, collect objects, and uncover secrets on your quest for power, glory, and fortune.</p>
 
@@ -89,3 +94,5 @@
 
     <h2>License</h2>
     <p>This game is open source. You are free to modify and distribute it according to your needs.</p>
+</body>
+</html>
