@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+# DUNGEON ADVENTURE GAME
     <h1>Dungeon Adventure</h1>
     <p>Welcome to <strong>Dungeon Adventure</strong>! This is a text-based adventure game written in Prolog. In this game, you'll explore various mystical locations, interact with characters, collect objects, and uncover secrets on your quest for power, glory, and fortune.</p>
     <h2>Features</h2>
@@ -22,41 +16,9 @@
         <li><strong>Exploration</strong>: Look around using <code>look</code> to see your current environment and available directions.</li>
         <li><strong>Inventory</strong>: Manage your inventory with commands like <code>inventory</code>, <code>pick(Item)</code>, and <code>drop(Item)</code>.</li>
         <li><strong>Quest Completion</strong>: Follow narratives and complete tasks to progress through the game.</li>
-    </ul>
-    <h2>Commands</h2>
-    <ul>
-        <li><strong>Movement</strong>: 
-            <ul>
-                <li><code>north</code>, <code>south</code>, <code>east</code>, <code>west</code></li>
-            </ul>
-        </li>
-        <li><strong>Interaction</strong>: 
-            <ul>
-                <li><code>talkTo(CharacterName)</code></li>
-                <li><code>give(CharacterName, [Item1, Item2, ...])</code></li>
-            </ul>
-        </li>
-        <li><strong>Inventory</strong>: 
-            <ul>
-                <li><code>inventory</code></li>
-                <li><code>pick(Item)</code></li>
-                <li><code>drop(Item)</code></li>
-            </ul>
-        </li>
-        <li><strong>Exploration</strong>: 
-            <ul>
-                <li><code>look</code></li>
-                <li><code>enter(Place)</code></li>
-                <li><code>exit</code></li>
-            </ul>
-        </li>
-        <li><strong>Special</strong>: 
-            <ul>
-                <li><code>pickAll</code>: Pick up all items in the current location</li>
-                <li><code>quit</code>: Exit the game</li>
-            </ul>
-        </li>
-    </ul>
+<!--Commands for the game --!>
+### Commands
+        
     <h2>Getting Started</h2>
     <ol>
         <li><strong>Install SWI-Prolog</strong>: Ensure you have SWI-Prolog installed on your system. You can download it from <a href="https://www.swi-prolog.org/Download.html">SWI-Prolog's website</a>.</li>
