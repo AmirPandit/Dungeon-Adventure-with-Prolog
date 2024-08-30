@@ -3,27 +3,27 @@
 
 description(dungeon):-
     nl,
-    write("it's dark a cold fire, there is no one here ").
+    write("it's dark a cold fire, the place is completely empty. ").
 
 description("forest of giants"):-
     nl,
-   write("the place is full of giants status and bodies, it's not a place you would survive it alone"),
+   write("Surrounded by giant statues and bodies, it's a place where survival alone is impossible."),
    nl,
    writeNarrative(giant).
 
 description(forest):-
     nl,
-            write("it is  nice and quiet but be aware of it's not always as it looks like").
+            write("It’s nice and quiet, but beware—things aren’t always what they seem.").
 description(temple):-
     nl,
-           write("you're inside an Egyptian temple"),nl,
+           write("you're inside an temple"),nl,
            writeNarrative("egyptian creature").
 description("treasure room"):-
     nl,
-           write("there is a treasure in the middle of the room").
+           write("A treasure sits in the middle of the room.").
 description(village):-
     nl,
-           write("a casual village with few citizens").
+           write("a normal village with few citizens").
 description(maze):-
     nl,
            write("you can't find your way without the lantern of truth").
@@ -39,7 +39,7 @@ description(lake):-
            writeNarrative(aquaDragon).
 description("mountain of despair"):-
     nl,
-          write("welcome to mountain of despair you can see death  bodies and skillets be carefull or you end like them").
+          write("Welcome to the Mountain of Despair. Death surrounds you—bodies and skeletons everywhere. Be careful, or you’ll end up like them.").
 description("castle of drangleic"):-
     nl,
          write("a good place to get an armor...").
@@ -142,7 +142,7 @@ charRequire("wise man",["egyptian treasure"]).
 charRequire(mage,["flower of life","phoenix egg"]).
 charGive("wise man",["lantern of truth"]).
 charGive(mage,["mage permission","magic stick"]).
-charSpeech("wise man","Hello warrior, you're at the beginning of a long journey. I have a mission for you, bring me the egyptian treasure inside the old temple and I'll give you the **lantern of truth**.you will need it for the rest of the journey").
+charSpeech("wise man","Greetings, warrior. You're at the start of a long journey. I have a mission for you: retrieve the Egyptian treasure from the old temple, and in return, I'll give you the **Lantern of Truth**. You'll need it for the rest of your quest.").
 charSpeech(mage,"we can talk after you bring me the ** phoenix egg , flower of life **.try to check the maze and the forest of giants if you didn't yet").
 
 /* defines interactions with game characters */
@@ -152,7 +152,7 @@ talkTo(_char):-
   charSpeech(_char,_speech),
   write_ln(_speech).
 talkTo(_):-
-    write_ln("who are you talking too !!!").
+    write_ln("who are you talking to?!").
 
 give(_char,_objects):-
     currentLocation(_current),
@@ -380,13 +380,11 @@ drop(_):-
 start:-
     asserta(finished(no)),
     nl,
-    write("Hello warrior, welcome to the dungeon,"),nl,
-    write("you came here looking after power, glory, and fortune."),nl,
-    write("You're standing in front of the dungeon guardian"),nl,
-    write("he will ask you a question,"),nl,
-    write("you have to solve the next enigma in order to start your journey."),nl,
+    write("Hello, warrior. You've entered the dungeon,"),nl,
+    write("You're standing in front of the dungeon guardian"),nl,\
+    write("To start your adventure, you must solve his riddle."),nl,
     write("if you respond wrongly you'll be killed by the guardian"),nl,
-    write("do you want to accept ? (yes/no)"),nl,
+    write("Do you want to take this challenge? (yes/no)"),nl,
     readln(_decision),
     delete(_decision,.,_decision2),
     acceptFirstExam(_decision2),
