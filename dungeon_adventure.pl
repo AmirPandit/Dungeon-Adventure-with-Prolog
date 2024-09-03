@@ -5,7 +5,7 @@ description(dungeon):-
     nl,
     write("it's dark a cold fire, the place is completely empty. ").
 
-description("forest of giants"):-
+description("Giant Woods"):-
     nl,
    write("Surrounded by giant statues and bodies, it's a place where survival alone is impossible."),
    nl,
@@ -14,9 +14,9 @@ description("forest of giants"):-
 description(forest):-
     nl,
             write("It’s nice and quiet, but beware—things aren’t always what they seem.").
-description(temple):-
+description(mandir):-
     nl,
-           write("you're inside an temple"),nl,
+           write("you're inside an mandir"),nl,
            writeNarrative("egyptian creature").
 description("treasure room"):-
     nl,
@@ -39,7 +39,7 @@ description(lake):-
            writeNarrative(aquaDragon).
 description("mountain of despair"):-
     nl,
-          write("Welcome to the Mountain of Despair. Death surrounds you—bodies and skeletons everywhere. Be careful, or you’ll end up like them.").
+          write("Welcome to the Mountain of Despair. Death surrounds you, bodies and skeletons everywhere. Be careful, or you will end up like them.").
 description("castle of drangleic"):-
     nl,
          write("a good place to get an armor...").
@@ -48,7 +48,7 @@ description(house):-
     write("pretty old house from the midlle ages").
 description(guild):-
     nl,
-    write("this is a place where warriors come to train, you might find someone to accompany you").
+    write("this is a place where sipahi come to train, you might find someone to accompany you").
 description(hut):-
     nl,
     write("such a miserable place, negative energy is everywhere, don't stay here long or ...").
@@ -59,7 +59,7 @@ description("water hole"):-
     write("you can't see much").
 description("reaper room"):-
     write("flames are every where around ...").
-description("final boss room"):-
+description("Throne of Shadows"):-
     nl,
     write("the boss attacked  you but your armor is solid enough to protect you"),
     nl,
@@ -75,24 +75,24 @@ description("final boss room"):-
     asserta(finished(yes)),
     write("***********************end**********************").
 
-/* Defines the sub-places within main locations (e.g., "temple" has a "treasure room").*/
-hasPlace(temple,["treasure room"]).
+/* Defines the sub-places within main locations (e.g., "mandir" has a "treasure room").*/
+hasPlace(mandir,["treasure room"]).
 hasPlace(village,[house,guild]).
 hasPlace(underworld,["reaper room"]).
 hasPlace(lake,["water hole"]).
 hasPlace("mountain of despair",[hut]).
 hasPlace("castle of drangleic",[cave]).
 
-/*Associates characters with their locations (e.g., "wise man" is in the "forest").*/
-hasChar(forest,"wise man").
+/*Associates characters with their locations (e.g., "jogi" is in the "forest").*/
+hasChar(forest,jogi).
 hasChar("mage place",mage).
 
 /*defines the connections between the places and objects*/
-hasObject("forest of giants",["phoenix egg","key of earth"]).
+hasObject("Giant Woods",["phoenix egg","key of earth"]).
 hasObject(maze,["flower of life"]).
 hasObject(house,["egyptian sword"]).
 hasObject("treasure room",["egyptian treasure"]).
-hasObject(guild,[warriors]).
+hasObject(guild,[sipahi]).
 hasObject(hut,["sword of souls","sun symbol"]).
 hasObject("castle of drangleic",[armor,"moon symbol"]).
 hasObject("reaper room",["flames of regret"]).
@@ -101,12 +101,12 @@ hasObject(cave,["key of wind"]).
 hasObject(underworld,["key of fire"]).
 
 /*This defines which locations are connected and in which directions
-(e.g., "forest of giants" is connected to "maze" to the east and "dungeon" to the south).*/
-connected("forest of giants",[location(east,maze),location(south,dungeon)]).
-connected(dungeon,[location(north,"forest of giants"),location(south,"final boss room"),location(east,forest)]).
-connected(forest,[location(west,dungeon),location(south,temple),location(east,village)]).
-connected(temple,[location(north,forest)]).
-connected(maze,[location(south,village),location(west,"forest of giants"),location(east,lake)]).
+(e.g., "Giant Woods" is connected to "maze" to the east and "dungeon" to the south).*/
+connected("Giant Woods",[location(east,maze),location(south,dungeon)]).
+connected(dungeon,[location(north,"Giant Woods"),location(south,"Throne of Shadows"),location(east,forest)]).
+connected(forest,[location(west,dungeon),location(south,mandir),location(east,village)]).
+connected(mandir,[location(north,forest)]).
+connected(maze,[location(south,village),location(west,"Giant Woods"),location(east,lake)]).
 connected(village,[location(north,maze),location(south,"mage place"),location(east,"mountain of despair"),location(west,forest)]).
 connected("mage place",[location(north,village),location(east,"castle of drangleic"),location(south,underworld)]).
 connected(underworld,[location(north,"mage place")]).
@@ -115,9 +115,9 @@ connected("mountain of despair",[location(west,village)]).
 connected("castle of drangleic",[location(west,"mage place")]).
 
 /* defines requirements to enter a specific location */
-require("forest of giants",[warriors]):-!.
-require("final boss room",["key of fire","key of water","key of earth","key of wind",armor,"sword of ice and fire"]):-!.
-require(temple,["egyptian sword"]):-!.
+require("Giant Woods",[sipahi]):-!.
+require("Throne of Shadows",["key of fire","key of water","key of earth","key of wind",armor,"sword of ice and fire"]):-!.
+require(mandir,["egyptian sword"]):-!.
 require(maze,["lantern of truth"]):-!.
 require("castle of drangleic",["mage permission"]):-!.
 require(underworld,["mage permission","sword of souls"]):-!.
@@ -125,10 +125,10 @@ require(lake,["sun symbol","moon symbol","magic stick","flames of regret"]):-!.
 require(_,[]).
 
 /* Bosses narrative */
-bossNarrative(giant,"with the help of the other warriors, you were able to defeat the giant creature that lives in this forest").
+bossNarrative(giant,"with the help of the other sipahi, you were able to defeat the giant creature that lives in this forest").
 bossNarrative(cerberus,"Cerberus attacked you from no where ... , you were able to kill him using the power of sword of souls").
 bossNarrative(aquaDragon,"the monster protecting this place attacked you. the monster protecting this place attacked you. you used the power of the magic stick,moon symbol and sun symbol to evaporate the lake").
-bossNarrative("egyptian creature","thanks to the **Egyptian sword** you were able to defeat Egyptian boss that protects this temple.").
+bossNarrative("egyptian creature","thanks to the **Egyptian sword** you were able to defeat Egyptian boss that protects this mandir.").
 
 writeNarrative(_boss):-
      nl,
@@ -138,11 +138,11 @@ writeNarrative(_boss):-
      assert(bossNarrative(_boss,"")).
 
 /* define characters requirements and gifts */
-charRequire("wise man",["egyptian treasure"]).
+charRequire(jogi,["egyptian treasure"]).
 charRequire(mage,["flower of life","phoenix egg"]).
-charGive("wise man",["lantern of truth"]).
+charGive(jogi,["lantern of truth"]).
 charGive(mage,["mage permission","magic stick"]).
-charSpeech("wise man","Greetings, warrior. You're at the start of a long journey. I have a mission for you: retrieve the Egyptian treasure from the old temple, and in return, I'll give you the **Lantern of Truth**. You'll need it for the rest of your quest.").
+charSpeech(jogi,"Greetings, warrior. You're at the start of a long journey. I have a mission for you: retrieve the Egyptian treasure from the old mandir, and in return, I'll give you the **Lantern of Truth**. You'll need it for the rest of your quest.").
 charSpeech(mage,"we can talk after you bring me the ** phoenix egg , flower of life **.try to check the maze and the forest of giants if you didn't yet").
 
 /* defines interactions with game characters */
@@ -381,7 +381,7 @@ start:-
     asserta(finished(no)),
     nl,
     write("Hello, warrior. You've entered the dungeon,"),nl,
-    write("You're standing in front of the dungeon guardian"),nl,\
+    write("You're standing in front of the dungeon guardian"),nl,
     write("To start your adventure, you must solve his riddle."),nl,
     write("if you respond wrongly you'll be killed by the guardian"),nl,
     write("Do you want to take this challenge? (yes/no)"),nl,
@@ -489,10 +489,10 @@ determiner-->[a].
 
 noun(player_move,_arg)-->pred(_arg).
 noun(talk_to_char,_arg)-->[_arg].
-noun(talk_to_char,"wise man")-->[wise,man].
+noun(talk_to_char,jogi)-->[jogi].
 noun(give_char,(mage,["phoenix egg","flower of life"]))-->
     [mage,phoenix,egg,and,flower,of,life];[mage,flower,of,life,and,phoenix,egg].
-noun(give_char,("wise man",["egyptian treasure"]))-->[wise,man,egyptian,treasure].
+noun(give_char,(jogi,["egyptian treasure"]))-->[jogi,egyptian,treasure].
 noun(enter_place,_args)-->[_args].
 noun(enter_place,"treasure room")-->[treasure,room].
 noun(enter_place,"reaper room")-->[reaper,room].
@@ -503,7 +503,7 @@ noun(pick_object,"egyptian treasure")-->[egyptian,treasure].
 noun(pick_object,"flower of life")-->[flower,of,life].
 noun(pick_object,"egyptian sword")-->[egyptian,sword].
 noun(pick_object,"sword of souls")-->[sword,of,souls].
-noun(pick_object,warriors)-->[warriors].
+noun(pick_object,sipahi)-->[sipahi].
 noun(pick_object,armor)-->[armor].
 noun(pick_object,"sun symbol")-->[sun,symbol].
 noun(pick_object,"moon symbol")-->[moon,symbol].
@@ -519,7 +519,7 @@ noun(drop_object,"egyptian treasure")-->[egyptian,treasure].
 noun(drop_object,"flower of life")-->[flower,of,life].
 noun(drop_object,"egyptian sword")-->[egyptian,sword].
 noun(drop_object,"sword of souls")-->[sword,of,souls].
-noun(drop_object,warriors)-->[warriors].
+noun(drop_object,sipahi)-->[sipahi].
 noun(drop_object,armor)-->[armor].
 noun(drop_object,"sun symbol")-->[sun,symbol].
 noun(drop_object,"moon symbol")-->[moon,symbol].
